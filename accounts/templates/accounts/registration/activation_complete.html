@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Activacion realizada{% endblock %}
+
+{% block attrs_body %}class="gray-bg"{% endblock %}
+
+{% block content %}
+  <div class="middle-box text-center animated fadeInDown">
+    <h1>Activacion</h1>
+    <h3 class="font-bold">Activacion de cuenta.</h3>
+
+    <div class="error-desc">
+      Su cuenta fue activada satisfactoriamente.
+      <a href="{% url 'accounts:login' %}">Presione aqui oara loguearse</a>
+    </div>
+  </div>
+{% endblock %}

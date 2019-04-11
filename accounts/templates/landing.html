@@ -1,0 +1,894 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+{% endblock %}
+
+{% block attrs_body %}
+  id="page-top" class="landing-page no-skin-config"
+{% endblock %}
+
+{% block content %}
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://travelposting.com">TravelPosting</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="page-scroll" href="#page-top">Inicio</a></li>
+            {#            <li><a class="page-scroll" href="#features">Features</a></li>#}
+            <li>
+              <a class="page-scroll" href="#testimonials">Testimonios</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#pricing">Precios</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#statistics">Estadísticas</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#contact">Contacto</a>
+            </li>
+            <li>
+              {% if request.user.is_authenticated %}
+                <a class="" href="{% url 'destinations:list' %}">Tablero</a>
+              {% else %}
+                <a class="" data-toggle="modal" data-target="#modal" href="{% url 'accounts:login' %}?cod=landing">Iniciar sesión</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+      <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Descubra las ventajas <br/>
+              de tener todo en un sólo portal!</h1>
+            <p>Desde sus contactos en todo el mundo, <br>
+              la creación o mejora de su página web, <br>
+              su propia app, su servicio de correo electrónico y mucho más! <br>
+              Todo en un solo lugar y a precios razonables.</p>
+          </div>
+{#          <div class="carousel-image wow zoomIn">#}
+{#            <img src="img/landing/laptop.png" alt="laptop"/>#}
+{#          </div>#}
+        </div>
+        <!-- Set background for slide in css -->
+        <div class="header-back"
+             style="background: url('{% static 'accounts/img/digital-marketing 2.jpg' %}') 50% 0 no-repeat"></div>
+
+      </div>
+      <div class="item">
+        <div class="container">
+          <div class="carousel-caption blank">
+{#            <h1>Eficiencia</h1>#}
+            <p>
+              Nuestros programadores trabajan con dedicación <br>
+              para que este año usted puede disponer de herramientas <br>
+              que le garanticen una forma más eficiente de manejar su empresa.</p>
+{#            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>#}
+          </div>
+        </div>
+        <!-- Set background for slide in css -->
+        <div class="header-back two"
+             style="background: url('{% static 'accounts/img/digital-marketing-1433427_1280.jpg' %}')"></div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  {#  <section id="features" class="container services">#}
+  {#    <div class="row">#}
+  {#      <div class="col-sm-3">#}
+  {#        <h2>Full responsive</h2>#}
+  {#        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies#}
+  {#          vehicula#}
+  {#          ut id elit. Morbi leo risus.</p>#}
+  {#        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>#}
+  {#      </div>#}
+  {#      <div class="col-sm-3">#}
+  {#        <h2>LESS/SASS Files</h2>#}
+  {#        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies#}
+  {#          vehicula#}
+  {#          ut id elit. Morbi leo risus.</p>#}
+  {#        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>#}
+  {#      </div>#}
+  {#      <div class="col-sm-3">#}
+  {#        <h2>6 Charts Library</h2>#}
+  {#        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies#}
+  {#          vehicula#}
+  {#          ut id elit. Morbi leo risus.</p>#}
+  {#        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>#}
+  {#      </div>#}
+  {#      <div class="col-sm-3">#}
+  {#        <h2>Advanced Forms</h2>#}
+  {#        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies#}
+  {#          vehicula#}
+  {#          ut id elit. Morbi leo risus.</p>#}
+  {#        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>#}
+  {#      </div>#}
+  {#    </div>#}
+  {#  </section>#}
+  <section class="container features">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="navy-line"></div>
+        <h1>
+          Descubra mucho más<br/>
+          <span class="navy"> en la industria del turismo con nosotros</span>
+        </h1>
+        <p> Descubra más de 95.000 empresas en el sector del turismo en más de 180 países. </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-center wow fadeInLeft">
+        <div>
+          <i class="fa fa-address-book-o features-icon"></i>
+          <h2>Contactos</h2>
+          <p>Tenga todos sus contactos en un solo lugar, y disponga de herramientas de comunicación que le permitan un
+            fácil acceso.</p>
+        </div>
+        <div class="m-t-lg">
+          <i class="fa fa-newspaper-o features-icon"></i>
+          <h2>Publicidad</h2>
+          <p>Ahora su publicidad podrá llegar a la mayor cantidad posible de futuros clientes gracias a nuestros
+            servicios digitales.</p>
+        </div>
+      </div>
+      <div class="col-md-6 text-center wow zoomIn">
+        <img src="{% static 'accounts/img/businessman-internacional.jpg' %}" alt="dashboard" class="img-responsive">
+      </div>
+      <div class="col-md-3 text-center wow fadeInRight">
+        <div>
+          <i class="fa fa-firefox features-icon"></i>
+          <h2>Servicios Online</h2>
+          <p>Con la ayuda de nuestros expertos, ya no tendrá mas excusas para no estar presente en la web o en las redes
+            sociales.</p>
+        </div>
+        <div class="m-t-lg">
+          <i class="fa fa-bullhorn features-icon"></i>
+          <h2>MARKETING</h2>
+          <p>Permítanos ayudarle a crear campañas publicitarias que le ayuden a atraer mas interesados a su página web o
+            su producto.</p>
+        </div>
+      </div>
+    </div>
+    {#    <div class="row">#}
+    {#      <div class="col-lg-12 text-center">#}
+    {#        <div class="navy-line"></div>#}
+    {#        <h1>Discover great feautres</h1>#}
+    {#        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>#}
+    {#      </div>#}
+    {#    </div>#}
+    {#    <div class="row features-block">#}
+    {#      <div class="col-lg-6 features-text wow fadeInLeft">#}
+    {#        <small>INSPINIA</small>#}
+    {#        <h2>Perfectly designed </h2>#}
+    {#        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+    {#          admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+    {#          collection of reusable UI components and integrated with latest jQuery plugins.</p>#}
+    {#        <a href="" class="btn btn-primary">Learn more</a>#}
+    {#      </div>#}
+    {#      <div class="col-lg-6 text-right wow fadeInRight">#}
+    {#        <img src="img/landing/dashboard.png" alt="dashboard" class="img-responsive pull-right">#}
+    {#      </div>#}
+    {#    </div>#}
+  </section>
+  {#  <section id="team" class="gray-section team">#}
+  {#    <div class="container">#}
+  {#      <div class="row m-b-lg">#}
+  {#        <div class="col-lg-12 text-center">#}
+  {#          <div class="navy-line"></div>#}
+  {#          <h1>Our Team</h1>#}
+  {#          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row">#}
+  {#        <div class="col-sm-4 wow fadeInLeft">#}
+  {#          <div class="team-member">#}
+  {#            <img src="img/landing/avatar3.jpg" class="img-responsive img-circle img-small" alt="">#}
+  {#            <h4><span class="navy">Amelia</span> Smith</h4>#}
+  {#            <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta#}
+  {#              sensibus. </p>#}
+  {#            <ul class="list-inline social-icon">#}
+  {#              <li><a href="#"><i class="fa fa-twitter"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-facebook"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-linkedin"></i></a>#}
+  {#              </li>#}
+  {#            </ul>#}
+  {#          </div>#}
+  {#        </div>#}
+  {#        <div class="col-sm-4">#}
+  {#          <div class="team-member wow zoomIn">#}
+  {#            <img src="img/landing/avatar1.jpg" class="img-responsive img-circle" alt="">#}
+  {#            <h4><span class="navy">John</span> Novak</h4>#}
+  {#            <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta#}
+  {#              sensibus.</p>#}
+  {#            <ul class="list-inline social-icon">#}
+  {#              <li><a href="#"><i class="fa fa-twitter"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-facebook"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-linkedin"></i></a>#}
+  {#              </li>#}
+  {#            </ul>#}
+  {#          </div>#}
+  {#        </div>#}
+  {#        <div class="col-sm-4 wow fadeInRight">#}
+  {#          <div class="team-member">#}
+  {#            <img src="img/landing/avatar2.jpg" class="img-responsive img-circle img-small" alt="">#}
+  {#            <h4><span class="navy">Peter</span> Johnson</h4>#}
+  {#            <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta#}
+  {#              sensibus.</p>#}
+  {#            <ul class="list-inline social-icon">#}
+  {#              <li><a href="#"><i class="fa fa-twitter"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-facebook"></i></a>#}
+  {#              </li>#}
+  {#              <li><a href="#"><i class="fa fa-linkedin"></i></a>#}
+  {#              </li>#}
+  {#            </ul>#}
+  {#          </div>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">#}
+  {#          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad#}
+  {#            perspiciatis, totam corporis ea, alias ut unde.</p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#    </div>#}
+  {#  </section>#}
+  {#  <section class="features">#}
+  {#    <div class="container">#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-12 text-center">#}
+  {#          <div class="navy-line"></div>#}
+  {#          <h1>Even more great feautres</h1>#}
+  {#          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row features-block">#}
+  {#        <div class="col-lg-3 features-text wow fadeInLeft">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with latest jQuery plugins.</p>#}
+  {#          <a href="" class="btn btn-primary">Learn more</a>#}
+  {#        </div>#}
+  {#        <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">#}
+  {#          <img src="img/landing/iphone.jpg" class="img-responsive" alt="dashboard">#}
+  {#        </div>#}
+  {#        <div class="col-lg-3 features-text text-right wow fadeInRight">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with latest jQuery plugins.</p>#}
+  {#          <a href="" class="btn btn-primary">Learn more</a>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#    </div>#}
+  {##}
+  {#  </section>#}
+  {#  <section class="timeline gray-section">#}
+  {#    <div class="container">#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-12 text-center">#}
+  {#          <div class="navy-line"></div>#}
+  {#          <h1>Our workflow</h1>#}
+  {#          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row features-block">#}
+  {##}
+  {#        <div class="col-lg-12">#}
+  {#          <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">#}
+  {#            <div class="vertical-timeline-block">#}
+  {#              <div class="vertical-timeline-icon navy-bg">#}
+  {#                <i class="fa fa-briefcase"></i>#}
+  {#              </div>#}
+  {##}
+  {#              <div class="vertical-timeline-content">#}
+  {#                <h2>Meeting</h2>#}
+  {#                <p>Conference on the sales results for the previous year. Monica please examine sales trends in#}
+  {#                  marketing#}
+  {#                  and products. Below please find the current status of the sale.#}
+  {#                </p>#}
+  {#                <a href="#" class="btn btn-xs btn-primary"> More info</a>#}
+  {#                <span class="vertical-date"> Today <br/> <small>Dec 24</small> </span>#}
+  {#              </div>#}
+  {#            </div>#}
+  {##}
+  {#            <div class="vertical-timeline-block">#}
+  {#              <div class="vertical-timeline-icon navy-bg">#}
+  {#                <i class="fa fa-file-text"></i>#}
+  {#              </div>#}
+  {##}
+  {#              <div class="vertical-timeline-content">#}
+  {#                <h2>Decision</h2>#}
+  {#                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the#}
+  {#                  industry's standard dummy text ever since.</p>#}
+  {#                <a href="#" class="btn btn-xs btn-primary"> More info</a>#}
+  {#                <span class="vertical-date"> Tomorrow <br/> <small>Dec 26</small> </span>#}
+  {#              </div>#}
+  {#            </div>#}
+  {##}
+  {#            <div class="vertical-timeline-block">#}
+  {#              <div class="vertical-timeline-icon navy-bg">#}
+  {#                <i class="fa fa-cogs"></i>#}
+  {#              </div>#}
+  {##}
+  {#              <div class="vertical-timeline-content">#}
+  {#                <h2>Implementation</h2>#}
+  {#                <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting#}
+  {#                  industry. Lorem Ipsum has been the industry's. </p>#}
+  {#                <a href="#" class="btn btn-xs btn-primary"> More info</a>#}
+  {#                <span class="vertical-date"> Monday <br/> <small>Jan 02</small> </span>#}
+  {#              </div>#}
+  {#            </div>#}
+  {##}
+  {#          </div>#}
+  {#        </div>#}
+  {##}
+  {#      </div>#}
+  {#    </div>#}
+  {##}
+  {#  </section>#}
+  <section id="testimonials" class="navy-section testimonials" style="margin-top: 0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center wow zoomIn">
+          <i class="fa fa-comment big-icon"></i>
+          {#          <h1>#}
+          {#            What our users say#}
+          {#          </h1>#}
+          <div class="testimonials-text">
+            <i>TRAVEL&SOLUTIONS es el Software de Travelposting, con él podrá conectarse a más de 95.000 empresas
+              registradas a nivel mundial, no importa si esta buscando un aliado en el área hotelera, servicios
+              turísticos, aseguradoras de viajes, alquiler de autos o simplemente busca ofrecer sus destinos turísticos
+              a otras empresas. Con Travel&Solution le brindamos esa ventaja que usted necesita, todo en un solo lugar y
+              a precios accesibles.
+
+              Desde el 01.03.2009 estamos oficialmente en el mercado con nuestra empresa de promoción y mercadeo, desde
+              ese día han pasado muchas cosas, pero seguimos con nuestra pasión por mantener satisfechos a nuestros
+              clientes gracias al trabajo que en conjunto llevamos.</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="comments gray-section" style="margin-top: 0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="navy-line"></div>
+          <h1>Lo que nuestros clientes dicen.</h1>
+          <p>Cuando nuestro trabajo esta dedica a sus soluciones.</p>
+        </div>
+      </div>
+      <div class="row features-block">
+        <div class="col-lg-4">
+          <div class="bubble">
+            "Gracias a la posibilidad de poder promocionar mis destinos fuera de Colombia he podido contactar más
+            potenciales aliados para trabajar a nivel internacional."
+          </div>
+          <div class="comments-avatar">
+            <a href="" class="pull-left">
+              <img alt="image" src="{% static 'accounts/img/avatar_diego_marin.jpeg' %}">
+            </a>
+            <div class="media-body">
+              <div class="commens-name">
+                Diego Marin
+              </div>
+              <small class="text-muted">Huilaruta45 - Colombia</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="bubble">
+            "Travel&Solutions nos ha brindado la oportunidad de poder mostrar nuestro hotel y la buena gastronomia que
+            brindamos."
+          </div>
+          <div class="comments-avatar">
+            <a href="" class="pull-left">
+              <img alt="image" src="img/landing/avatar1.jpg">
+            </a>
+            <div class="media-body">
+              <div class="commens-name">
+                Hotel Casa Hotel
+              </div>
+              <small class="text-muted">Ibague Colombia</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="bubble">
+            "Siempre supimos que mientras más personas conocieran nuestras playas, mas serian los clientes que nos
+            visitarian y conocerian este paraiso."
+          </div>
+          <div class="comments-avatar">
+            <a href="" class="pull-left">
+              <img alt="image" src="img/landing/avatar2.jpg">
+            </a>
+            <div class="media-body">
+              <div class="commens-name">
+                Anónimo
+              </div>
+              <small class="text-muted">Playitas, Ecuador</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {#  <section class="features">#}
+  {#    <div class="container">#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-12 text-center">#}
+  {#          <div class="navy-line"></div>#}
+  {#          <h1>More and more extra great feautres</h1>#}
+  {#          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-5 col-lg-offset-1 features-text">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <i class="fa fa-bar-chart big-icon pull-right"></i>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with.</p>#}
+  {#        </div>#}
+  {#        <div class="col-lg-5 features-text">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <i class="fa fa-bolt big-icon pull-right"></i>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with.</p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#      <div class="row">#}
+  {#        <div class="col-lg-5 col-lg-offset-1 features-text">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <i class="fa fa-clock-o big-icon pull-right"></i>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with.</p>#}
+  {#        </div>#}
+  {#        <div class="col-lg-5 features-text">#}
+  {#          <small>INSPINIA</small>#}
+  {#          <h2>Perfectly designed </h2>#}
+  {#          <i class="fa fa-users big-icon pull-right"></i>#}
+  {#          <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive#}
+  {#            admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge#}
+  {#            collection of reusable UI components and integrated with.</p>#}
+  {#        </div>#}
+  {#      </div>#}
+  {#    </div>#}
+  {##}
+  {#  </section>#}
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+          <div class="navy-line"></div>
+          <h1><a href="https://travelandsolutions.com/#precios">OFERTA ESPECIAL</a></h1>
+          <p>Sabemos que existen muchas empresas en internet que ofrecen lo mejor del azul del cielo y quizás nosotros
+            no seamos los mas conocidos en el mercado latino, pero nuestra experiencia de casi 10 años en el mercado nos
+            permite manejar un portafolio de expertos con los cuales podemos brindar las más y mejores ofertas del
+            mercado. <br>
+            Si consigue alguien más económico que nosotros y con el mismo rendimiento le devolvemos su inversión.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 wow zoomIn">
+          <ul class="pricing-plan list-unstyled">
+            <li class="pricing-title">
+              Professional (Ap. 01.08.19)
+            </li>
+            <li class="pricing-desc">
+              Ideal para grandes empresas
+            </li>
+            <li class="pricing-price">
+              <span>€ 249.99 + imp.</span><br>
+              <small>mensuales durante 6 meses, después € 349,99 /mes.</small>
+            </li>
+            <li>
+              Sin cuota de afiliación
+            </li>
+            <li style="text-align: left">
+              Conéctate con 25.000 empresas
+              <ul>
+                <li style="text-align: left">
+                  <small>Promueve tus destinos turísticos online</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Búsqueda en el sector turismo, nacional e internacional</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PUBLICIDAD ONLINE
+              <ul>
+                <li style="text-align: left">
+                  <small>Obtén seiscientos (600) espacio publicitarios para tus destinos en nuestra
+                    página web travelposting.com</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Tres (3) espacios de 90 x 75 mm</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Cuatro (4) espacios de 50 x 297 mm anual en la revista digital travelposting.net</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Puede cambiar su espacio publicitario cada mes</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PUBLICIDAD ONLINE + (IMPRESA)
+              <ul>
+                <li style="text-align: left">
+                  <small>Cinco (5) espacios de 90 x 75 mm</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Diez (10) espacios de 50 x 297 mm anual en la revista digital travelposting.net</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Puede cambiar su espacio publicitario cada mes</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              SOPORTE
+              <ul>
+                <li style="text-align: left">
+                  <small>Servicio vía e-mail</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Skype / WhatsApp</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Lista FAQ</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PAGO
+              <ul>
+                <li style="text-align: left">
+                  <small>Facturación mensual</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Transferencia Bancaria (solo en la EU)</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Pagos Online con tarjeta de crédito / Paypal / Payoneer</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Garantía de reembolso 30 días</small>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="btn btn-primary btn-xs" href="{% url 'accounts:register' %}">Regístrate</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 wow zoomIn">
+          <ul class="pricing-plan list-unstyled selected">
+            <li class="pricing-title">
+              Advanced (Ap. 01.06.19)
+            </li>
+            <li class="pricing-desc">
+              Ideal para medianas empresas
+            </li>
+            <li class="pricing-price">
+              <span>€ 49.99 + imp.</span><br>
+              <small>mensuales durante 6 meses, después € 69,99 /mes</small>
+            </li>
+            <li>
+              Sin cuota de afiliación
+            </li>
+            <li style="text-align: left">
+              Conéctate con 5.000 empresas
+              <ul>
+                <li style="text-align: left">
+                  <small>Promueve tus destinos turísticos online</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Búsqueda en el sector turismo, nacional e internacional</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PUBLICIDAD ONLINE
+              <ul>
+                <li style="text-align: left">
+                  <small>Obtén doscientos (200) espacio publicitarios para tus destinos en nuestra página web travelposting.com</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Dos (2) espacios de 50 x 297 mm anual en la revista digital travelposting.net</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Puede cambiar su espacio publicitario cada dos mes</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              SOPORTE
+              <ul>
+                <li style="text-align: left">
+                  <small>Servicio vía e-mail</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Skype</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Lista FAQ</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PAGO
+              <ul>
+                <li style="text-align: left">
+                  <small>Facturación mensual</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Transferencia Bancaria (solo en la EU)</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Pagos Online con tarjeta de crédito / Paypal / Payoneer</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Garantía de reembolso 30 días</small>
+                </li>
+              </ul>
+            </li>
+            <li class="plan-action">
+              <a class="btn btn-primary btn-xs" href="{% url 'accounts:register' %}">Regístrate</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 wow zoomIn">
+          <ul class="pricing-plan list-unstyled">
+            <li class="pricing-title">
+              Starter (Promoción)
+            </li>
+            <li class="pricing-desc">Ideal para pequeñas empresas</li>
+            <li class="pricing-price">
+              <span>€ 0.</span><br>
+              <small>6 meses gratis (CUPON de descuento), después 24,99 €/mes</small>
+            </li>
+            <li>
+              Afiliación Anual € 158,99 + impuestos
+            </li>
+            <li style="text-align: left">
+              Promueve 100 destinos turísticos anual
+              <ul>
+                <li style="text-align: left">
+                  <small>Búsqueda de 500 en el sector turismo, nacional e internacional.</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PUBLICIDAD ONLINE
+              <ul>
+                <li style="text-align: left">
+                  <small>Obtén cincuenta (50) espacios publicitarios para tus destinos en nuestra pagina web travelposting.com</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PUBLICIDAD ONLINE + (IMPRESA)
+              <ul>
+                <li style="text-align: left">
+                  <small>Obtén un (1) espacio de 15 x 10 mm anual en nuestra página web travelandsolutions.com
+                  </small>
+                </li>
+                <li style="text-align: left">
+                  <small>Puede cambiar su espacio publicitario cada tres (3) meses</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              SOPORTE
+              <ul>
+                <li style="text-align: left">
+                  <small>Servicio vía e-mail</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Lista FAQ</small>
+                </li>
+              </ul>
+            </li>
+            <li style="text-align: left">
+              PAGO
+              <ul>
+                <li style="text-align: left">
+                  <small>Facturación mensual</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Transferencia Bancaria (solo en la EU)</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Pagos Online con tarjeta de crédito / Paypal / Payoneer</small>
+                </li>
+                <li style="text-align: left">
+                  <small>Garantía de reembolso 30 días</small>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="btn btn-primary btn-xs" href="{% url 'accounts:register' %}">Regístrate</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {#      <div class="row m-t-lg">#}
+      {#        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg">#}
+      {#          <p>*Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and#}
+      {#            a#}
+      {#            search for 'lorem ipsum' will uncover many web sites still in their infancy. <span class="navy">Various versions</span>#}
+      {#            have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>#}
+      {#        </div>#}
+      {#      </div>#}
+    </div>
+  </section>
+  <section id="statistics" class="features navy-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="widget p-lg text-center">
+            <div class="m-b-md">
+              <i class="fa fa-globe fa-4x"></i>
+              <h1 class="m-xs">180</h1>
+              <h3 class="font-bold no-margins">
+                Países alrededor del mundo
+              </h3>
+              {#              <small>amount</small>#}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="widget p-lg text-center">
+            <div class="m-b-md">
+              <i class="fa fa-user-plus fa-4x"></i>
+              <h1 class="m-xs">+/-5.000</h1>
+              <h3 class="font-bold no-margins">
+                Nuevos registros mensuales
+              </h3>
+              {#              <small>amount</small>#}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="widget p-lg text-center">
+            <div class="m-b-md">
+              <i class="fa fa-map-marker fa-4x"></i>
+              <h1 class="m-xs">95.000</h1>
+              <h3 class="font-bold no-margins">
+                Agencias registradas online
+              </h3>
+              {#              <small>amount</small>#}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="widget p-lg text-center">
+            <div class="m-b-md">
+              <i class="fa fa-envelope fa-4x"></i>
+              <h1 class="m-xs">24/7</h1>
+              <h3 class="font-bold no-margins">
+                Soporte online según afiliación
+              </h3>
+              {#              <small>amount</small>#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="gray-section contact" style="background-image: url('{% static 'accounts/img/word_map.png' %}')">
+    <div class="container">
+      <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+          <div class="navy-line"></div>
+          <h1>Contacto</h1>
+{#          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>#}
+        </div>
+      </div>
+      <div class="row m-b-lg">
+        <div class="col-lg-3 col-lg-offset-3">
+          <address>
+            <strong><span class="navy">Travelposting UG</span></strong><br/>
+            Ivo-Hauptmann-Ring 5<br/>
+            22159 Hamburg / Germany<br/>
+            travelsolution@travelposting.com
+            {#            <abbr title="Phone">P:</abbr> (123) 456-7890#}
+          </address>
+        </div>
+        <div class="col-lg-4">
+          <p class="text-color">
+            Tenemos toda una gama productos y servicios para <br>
+            ofrecerle, sin embargo, el plato principal de nuestra <br>
+            empresa es nuestro Software Travel&Solution. <br>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <a href="mailto:test@email.com" class="btn btn-primary">Enviar email o</a>
+          <p class="m-t-sm text-color">
+            Síguenos a través de
+          </p>
+          <ul class="list-inline social-icon">
+            <li><a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+          <p class="text-navy">
+            2019 Travelposting <br>
+            Travel&Solutions es una marca registradas de travelposting UG Germany
+          </p>
+          <p><strong>© 2018 M&Tposting</strong> All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'accounts/js/metisMenu/jquery.metisMenu.js' %}"></script>
+  <script src="{% static 'accounts/js/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="{% static 'accounts/js/inspinia.js' %}"></script>
+  <script src="{% static 'accounts/js/pace/pace.min.js' %}"></script>
+  <script src="{% static 'accounts/js/wow/wow.min.js' %}"></script>
+
+  <script src="{% static 'accounts/js/landing.js' %}"></script>
+  <script src="{% static 'accounts/js/login.js' %}"></script>
+{% endblock %}

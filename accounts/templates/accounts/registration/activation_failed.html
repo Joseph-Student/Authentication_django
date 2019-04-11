@@ -1,0 +1,16 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Error en activacion{% endblock %}
+
+{% block attrs_body %}class="gray-bg"{% endblock %}
+
+{% block content %}
+  <div class="middle-box text-center animated fadeInDown">
+    <h1>{{ code }}</h1>
+    <h3 class="font-bold">Error al activar su cuenta.</h3>
+
+    <div class="error-desc">
+      {{ message }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'accounts/base.html' %}
+
+{%  block title %}Registro{% endblock %}
+
+{% block css %}
+  {{ block.super }}
+{#  <link href="css/plugins/iCheck/custom.css" rel="stylesheet">#}
+{% endblock %}
+
+{% block attrs_body %}class="gray-bg"{% endblock %}
+
+{% block content %}
+  <div class="text-center"><h1 class="logo-name">TravelPosting</h1></div>
+  <div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top: 0;">
+    <div>
+      <h3>Registro de TravelPosting</h3>
+      <p>Crear cuenta</p>
+      {% include 'accounts/non_field_errors.html' %}
+      <form class="m-t" role="form" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            <label class="sr-only" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {{ field.help_text }}
+            {{ field.errors }}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary block full-width m-b">Registrar</button>
+        <p class="text-muted text-center">
+          <small>¿Ya posees una cuenta?</small>
+        </p>
+        <a class="btn btn-sm btn-white btn-block" href="{% url 'accounts:login' %}">Login</a>
+      </form>
+      {% include 'accounts/footer.html' %}
+    </div>
+  </div>
+{% endblock %}
+
+<!-- iCheck -->
+{#<script src="js/plugins/iCheck/icheck.min.js"></script>#}
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#        $('.i-checks').iCheck({#}
+{#            checkboxClass: 'icheckbox_square-green',#}
+{#            radioClass: 'iradio_square-green',#}
+{#        });#}
+{#    });#}
+{#</script>#}

@@ -1,0 +1,52 @@
+{% extends 'destinations/base.html' %}
+
+{% block title %}Información de usuario{% endblock %}
+
+{% block content %}
+  <div id="page-wrapper" class="gray-bg">
+    {% include 'destinations/navbar_top.html' %}
+
+    <div class="row">
+      <div class="col-lg-11">
+        <div class="wrapper wrapper-content animated fadeInDown">
+          <div class="ibox">
+            <div class="ibox-content">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="m-b-md">
+                    <a class="btn btn-white btn-xs pull-right" href="{% url 'accounts:user-update' object.pk %}">Editar
+                      información</a>
+                    <h3>Información de usuario</h3>
+                  </div>
+                  <p>
+                    Aquí puede ver toda su información.
+                  </p>
+                  <div class="col-lg-6">
+                    <dl class="dl-horizontal">
+                      <dt>Nombre de usuario:</dt>
+                      <dd>{{ object.username }}</dd>
+                      <dt>Nombre completo:</dt>
+                      <dd>{{ object.get_full_name.capitalize }}</dd>
+                      <dt>Correo electronico</dt>
+                      <dd>{{ object.email }}</dd>
+                    </dl>
+                  </div>
+                  <div class="col-lg-6">
+                    <dl class="dl-horizontal">
+                      <dt>Último inicio de sessión:</dt>
+                      <dd>{{ object.last_login }}</dd>
+                      <dt>Fecha de registro:</dt>
+                      <dd>{{ object.date_joined }}</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'destinations/footer.html' %}
+  </div>
+{% endblock %}

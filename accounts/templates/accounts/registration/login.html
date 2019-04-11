@@ -1,0 +1,45 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block attrs_body %}class="gray-bg"{% endblock %}
+
+{% block content %}
+  <div class="text-center"><h1 class="logo-name">TravelPosting</h1></div>
+  <div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top: 0;">
+    <div>
+      <h3>Bienvenido a Travel&Solutions</h3>
+      <p>Sistema para que nuestros clientes<br>
+          puedan cargar sus destinos en <a href="https://travelposting.com">travelposting</a> <br>
+          y luego ser visualizados en nuestros sistemas <br>
+          y en de nuestros Partners a nivel internacional.
+      </p>
+      <p>Inicia sesión. Para verlo en acción.</p>
+      {% include 'accounts/non_field_errors.html' %}
+      <form class="m-t" method="post" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            <label class="sr-only" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {{ field.help_text }}
+            {{ field.errors }}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary block full-width m-b">
+          Iniciar sesión
+        </button>
+        <a href="{% url 'accounts:password-reset' %}"><small>¿Olvidaste tu contraseña?</small></a>
+        <p class="text-muted text-center">
+          <small>¿No tiene una cuenta?</small>
+          <br>
+        </p>
+        <a class="btn btn-sm btn-white btn-block" href="{% url 'accounts:register' %}">
+          Crear una cuenta
+        </a>
+      </form>
+      {% include 'accounts/footer.html' %}
+    </div>
+  </div>
+{% endblock %}
